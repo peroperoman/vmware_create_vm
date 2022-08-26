@@ -1,0 +1,10 @@
+---
+### vcenter
+vcenter_hostname: <IP>
+vcenter_username: <ID>
+vcenter_password: <PWD>
+vcenter_datacenter: <DC_NAME>
+
+### vm template
+template_folder: <PATH>
+template_name: <NAME>

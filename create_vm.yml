@@ -1,0 +1,44 @@
+- hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create VM
+      vmware_guest:
+        name: "{{ item.name }}"
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ vcenter_datacenter }}"
+        folder: "{{ template_folder }}"
+        validate_certs: false
+        template: "{{ template_name }}"
+        state: poweredon
+        esxi_hostname: "{{ item.vm_host }}"
+        disk:
+          - size_gb: "{{ disk_size_gb }}"
+            type: "{{ disk_type }}"
+            datastore: datastore
+        hardware:
+          memory_mb: "{{ hardware_mem_mb }}"
+          num_cpus: "{{ hardware_num_cpus }}"
+          scsi: "{{ hardware_scsi }}"
+        networks:
+          - name: "{{ service_nw_name }}"
+            connected: yes
+            type: none
+            ip: "{{ item.service_ip }}"
+            netmask: "{{ item.service_mask }}"
+            start_connected: true
+          - name: "{{ storage_nw_name }}"
+            connected: yes
+            type: none
+            ip: "{{ item.storage_ip }}"
+            netmask: "{{ item.storage_mask }}"
+            start_connected: true
+        # wait_for_ip_address: yes
+      delegate_to: localhost
+      register: vm_info
+      with_items:
+        - "{{ guest_info }}"
+  
+    - debug:
+        var: vm_info

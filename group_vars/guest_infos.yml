@@ -1,0 +1,40 @@
+---
+### vm setting sample ###
+# guest_info:
+#   - name: web01
+#     vm_host: vm01
+#     service_ip: xxx.xxx.xxx.xxx
+#     service_mask: xxx.xxx.xxx.xxx
+#     storage_ip: xxx.xxx.xxx.xxx
+#     storage_mask: xxx.xxx.xxx.xxx
+
+guest_info:
+  - name: <>
+    vm_host: <>
+    service_ip: <>
+    service_mask: <>
+    storage_ip: <>
+    storage_mask: <>
+  - name: <>
+    vm_host: <>
+    service_ip: <>
+    service_mask: <>
+    storage_ip: <>
+    storage_mask: <>
+
+### common setting sample ###
+# disk_size_gb: 100
+# disk_type: thin
+# hardware_mem_mb: 1024
+# hardware_num_cpus: 1
+# hardware_scsi: paravirtual
+# service_nw_name: VM Network 3004
+# storage_nw_name: VM Network 3005
+
+disk_size_gb: <>
+disk_type: <>
+hardware_mem_mb: <>
+hardware_num_cpus: <>
+hardware_scsi: <>
+service_nw_name: <>
+storage_nw_name: <>

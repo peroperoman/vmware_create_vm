@@ -1,0 +1,14 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Provide information about vCenter folders
+      vmware_folder_info:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ vcenter_datacenter }}"
+        validate_certs: false
+      delegate_to: localhost
+      register: folder_info
+    - debug:
+        var: folder_info
